@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercises for EJS</title>
+</head>
+<body>
+
+<script>
+
+    /*Use the reduce method in combination with the concat method to “flatten” an array of arrays into a single array that has all the elements of the original arrays.*/
+    let arrays = [[1, 2, 3], [4, 5], [6]];
+    let reduced = arrays.reduce((arrayTotal, currentArray) => {
+        return arrayTotal.concat(currentArray);
+    }, []);
+    // console.log(reduced);
+    // → [1, 2, 3, 4, 5, 6]
+
+    /**Your own loop
+     Write a higher-order function loop that provides something like a for loop statement. It takes a value, a test function, an update function, and a body function. Each iteration, it first runs the test function on the current loop value and stops if that returns false. Then it calls the body function, giving it the current value. Finally, it calls the update function to create a new value and starts from the beginning.
+
+     When defining the function, you can use a regular loop to do the actual looping.*/
+        // Your code here.
+    let loop = (value, testFunction, updateFunction, bodyFunction) => {
+            for (let i = value; testFunction(i); i = updateFunction(i)) {
+                bodyFunction(i);
+            }
+        };
+    // loop(3, n => n > 0, n => n - 1, console.log);
+
+
+    /*    function every(array, test) {
+            // Your code here.
+           for (let elem of array) {
+               if (!test(elem)) return false;
+           }
+           return true;
+        }*/
+
+    function every(array, test) {
+        return !array.some((elem) => {
+            return !test(elem);
+        })
+    }
+
+
+    // console.log(every([1, 3, 5], n => n < 10));
+    // → true
+    // console.log(every([2, 4, 16], n => n < 10));
+    // → false
+    // console.log(every([], n => n < 10));
+    // → true
+</script>
+</body>
+</html>
