@@ -50,6 +50,52 @@
     // → false
     // console.log(every([], n => n < 10));
     // → true
+
+    class Rabbit {
+        constructor(type) {
+            this.type = type;
+        }
+        speak(line) {
+            console.log(`The ${this.type} rabbit says '${line}'`);
+        }
+        toString() {
+            return `a ${this.type} rabbit.`;
+        }
+    }
+    Rabbit.prototype.teeth = "small";
+    // Rabbit.prototype.toString = function() {
+    //     return `a ${this.type} rabbit.`;
+    // };
+
+    let killerRabbit = new Rabbit("killer");
+    let blackRabbit = new Rabbit("black");
+
+    // console.log(killerRabbit.teeth);
+    // console.log(Object.prototype.toString([1, 2]));
+
+    let ages = new Map();
+    ages.set("Boris", 39);
+    ages.set("Hung",32);
+    ages.set("Arya", 1);
+    // console.log(`Hung is ${ages.get("Hung")} years old.`);
+    // console.log(`Is Jack's age known? ${ages.has("Jack")}`);
+    // console.log(killerRabbit.hasOwnProperty("type"));
+
+    // console.log(killerRabbit.type);
+    // console.log(String(killerRabbit));
+    // console.log(killerRabbit.toString());
+
+    let sym = Symbol("name");
+    Rabbit.prototype[sym] = 55;
+    console.log(blackRabbit[sym]);
+    const toStringSymbol = Symbol("toString");
+    Array.prototype[toStringSymbol] = function() {
+        return `${this.length} cm of blue yarn`;
+    };
+
+    console.log([1, 2].toString());
+    console.log([1, 2][toStringSymbol]());
+
 </script>
 </body>
 </html>
